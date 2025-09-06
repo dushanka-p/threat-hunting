@@ -1,12 +1,5 @@
 # Scenario 2 – Sudden Network Slowdowns
 
-## Initial Setup
-
-* **Create a VM and onboard it to MDE** (Microsoft Defender for Endpoint).
-
-  * **Do not** use `labuser/Cyberlab123!` (or any other easy password).
-  * Your VM will most certainly get breached by a bad actor if it’s on long enough — this has already happened once.
-
 * **Run the following PowerShell command on your VM after onboarding it to MDE:**
 
 ```powershell
