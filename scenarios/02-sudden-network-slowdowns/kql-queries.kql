@@ -1,0 +1,9 @@
+// Checked to make sure log events coming through
+DeviceLogonEvents
+| order by Timestamp desc
+| take 10
+
+// Checked to make sure file events coming through
+DeviceFileEvents
+| order by Timestamp desc
+| take 10 
