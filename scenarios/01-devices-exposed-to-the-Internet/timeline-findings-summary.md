@@ -110,6 +110,18 @@ List of the relevant MITRE ATT&CK tactics and techniques observed or suspected d
 
 ---
 
+Remediation / Preventive Controls
+
+Network Security Group (NSG) Hardening
+
+* Restricted windows-target-1 to allow only RDP traffic from specific endpoints.
+* Disabled public internet access to the device.
+* Account Lockout Policy
+* Implemented to block brute-force attempts after repeated failed logins.
+* Multi-Factor Authentication (MFA)
+* Enforced MFA on accounts to reduce the risk of compromised credentials being used.
+
+---
 
 
 
