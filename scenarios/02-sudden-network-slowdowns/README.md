@@ -1,13 +1,5 @@
 # Scenario 2 – Sudden Network Slowdowns
 
-* **Run the following PowerShell command on your VM after onboarding it to MDE:**
-
-```powershell
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/joshmadakor1/lognpacific-public/refs/heads/main/cyber-range/entropy-gorilla/portscan.ps1' -OutFile 'C:\programdata\portscan.ps1';cmd /c powershell.exe -ExecutionPolicy Bypass -File C:\programdata\portscan.ps1
-```
-
----
-
 ## 1. Preparation
 
 * **Goal:** Set up the hunt by defining what you're looking for.
