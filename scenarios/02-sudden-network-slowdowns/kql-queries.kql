@@ -1,9 +1,14 @@
-// Checked to make sure log events coming through
+// Checked to make sure Log events coming through
 DeviceLogonEvents
 | order by Timestamp desc
 | take 10
 
-// Checked to make sure file events coming through
+// Checked to make sure File events coming through
 DeviceFileEvents
 | order by Timestamp desc
 | take 10 
+
+// Checked to make sure Process events coming through
+DeviceProcessEvents
+| order by Timestamp desc
+| take 10
