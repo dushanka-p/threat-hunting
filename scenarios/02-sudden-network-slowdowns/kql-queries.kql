@@ -12,3 +12,9 @@ DeviceFileEvents
 DeviceProcessEvents
 | order by Timestamp desc
 | take 10
+
+// Checked failed connections for the target machine
+DeviceNetworkEvents
+| where DeviceName == "th--dp--win11"
+| where ActionType == "ConnectionFailed"
+| summarize ConectionCount = count() by DeviceName, ActionType, LocalIP, RemoteIP
