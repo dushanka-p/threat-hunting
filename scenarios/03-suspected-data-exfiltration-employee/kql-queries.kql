@@ -1,25 +1,50 @@
-// Look for any kind of archive activity
-let archive_applications = dynamic(["winrar.exe", "7z.exe", "winzip32.exe", "peazip.exe", "Bandizip.exe", "UniExtract.exe", "POWERARC.EXE", "IZArc.exe", "AshampooZIP.exe", "FreeArc.exe"]);
-let VMName = "windows-target-1";
-DeviceProcessEvents
-| where FileName has_any(archive_applications)
-| order by Timestamp desc
+### 1. Check for ZIP File Events
 
-
-// Look for any file activity, based on the Timestamp from any discovered process activity
-let specificTime = datetime(2024-10-15T19:00:48.5615171Z);
-let VMName = "windows-target-1";
+```kusto
 DeviceFileEvents
-| where Timestamp between ((specificTime - 1m) .. (specificTime + 1m))
-| where DeviceName == VMName
+| where DeviceName == "th--dp--win11"
+| where FileName endswith ".zip"
 | order by Timestamp desc
+```
 
+---
 
-// Look for any network activity, based on the Timestamp from the process or file activity
-let VMName = "windows-target-1";
-let specificTime = datetime(2024-10-15T19:00:48.5615171Z);
-DeviceNetworkEvents
+### 2. Process Events Around ZIP Creation (±2 minutes)
+
+```kusto
+// 2025-09-07T09:47:00.359506Z
+let VMName = "th--dp--win11";
+let specificTime = datetime(2025-09-07T09:47:00.359506Z);
+
+DeviceProcessEvents
 | where Timestamp between ((specificTime - 2m) .. (specificTime + 2m))
 | where DeviceName == VMName
 | order by Timestamp desc
-Timeline Summary and F
+| project Timestamp, DeviceName, ActionType, FileName, ProcessCommandLine
+```
+
+---
+
+### 3. Network Events Around ZIP Creation (±4 minutes)
+
+```kusto
+// 2025-09-07T09:47:00.359506Z
+let VMName = "th--dp--win11";
+let specificTime = datetime(2025-09-07T09:47:00.359506Z);
+
+DeviceNetworkEvents
+| where Timestamp between ((specificTime - 4m) .. (specificTime + 4m))
+| where DeviceName == VMName
+| order by Timestamp desc
+```
+
+---
+
+👉 Best practice: keep them in your central **`queries.md`** with a clear label like this:
+
+```markdown
+## Scenario 05 – Suspicious ZIP File Creation
+- [x] DeviceFileEvents – Find ZIP files
+- [x] DeviceProcessEvents – Correlate with process activity
+- [x] DeviceNetworkEvents – Check for exfiltration
+```
