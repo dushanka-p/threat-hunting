@@ -1,6 +1,5 @@
-### 1. Check for ZIP File Events
+// 1. Check for ZIP File Events
 
-```kusto
 DeviceFileEvents
 | where DeviceName == "th--dp--win11"
 | where FileName endswith ".zip"
@@ -9,9 +8,8 @@ DeviceFileEvents
 
 ---
 
-### 2. Process Events Around ZIP Creation (±2 minutes)
+// 2. Process Events Around ZIP Creation (±2 minutes)
 
-```kusto
 // 2025-09-07T09:47:00.359506Z
 let VMName = "th--dp--win11";
 let specificTime = datetime(2025-09-07T09:47:00.359506Z);
@@ -25,9 +23,8 @@ DeviceProcessEvents
 
 ---
 
-### 3. Network Events Around ZIP Creation (±4 minutes)
+// 3. Network Events Around ZIP Creation (±4 minutes)
 
-```kusto
 // 2025-09-07T09:47:00.359506Z
 let VMName = "th--dp--win11";
 let specificTime = datetime(2025-09-07T09:47:00.359506Z);
