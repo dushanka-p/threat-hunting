@@ -1,1 +1,25 @@
+// Look for any kind of archive activity
+let archive_applications = dynamic(["winrar.exe", "7z.exe", "winzip32.exe", "peazip.exe", "Bandizip.exe", "UniExtract.exe", "POWERARC.EXE", "IZArc.exe", "AshampooZIP.exe", "FreeArc.exe"]);
+let VMName = "windows-target-1";
+DeviceProcessEvents
+| where FileName has_any(archive_applications)
+| order by Timestamp desc
 
+
+// Look for any file activity, based on the Timestamp from any discovered process activity
+let specificTime = datetime(2024-10-15T19:00:48.5615171Z);
+let VMName = "windows-target-1";
+DeviceFileEvents
+| where Timestamp between ((specificTime - 1m) .. (specificTime + 1m))
+| where DeviceName == VMName
+| order by Timestamp desc
+
+
+// Look for any network activity, based on the Timestamp from the process or file activity
+let VMName = "windows-target-1";
+let specificTime = datetime(2024-10-15T19:00:48.5615171Z);
+DeviceNetworkEvents
+| where Timestamp between ((specificTime - 2m) .. (specificTime + 2m))
+| where DeviceName == VMName
+| order by Timestamp desc
+Timeline Summary and F
