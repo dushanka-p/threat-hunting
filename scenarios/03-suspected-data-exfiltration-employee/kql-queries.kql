@@ -40,11 +40,3 @@ DeviceNetworkEvents
 
 ---
 
-👉 Best practice: keep them in your central **`queries.md`** with a clear label like this:
-
-```markdown
-## Scenario 05 – Suspicious ZIP File Creation
-- [x] DeviceFileEvents – Find ZIP files
-- [x] DeviceProcessEvents – Correlate with process activity
-- [x] DeviceNetworkEvents – Check for exfiltration
-```
