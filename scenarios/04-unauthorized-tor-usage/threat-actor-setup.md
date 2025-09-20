@@ -1,17 +1,21 @@
 # Threat Event (Unauthorized TOR Usage)
 **Unauthorized TOR Browser Installation and Use**
 
-## Steps the "Bad Actor" took Create Logs and IoCs:
+## Steps the "Bad Actor" took Create Logs and IoCs (complete this on on Threat actor VM):
 1. Download the TOR browser installer: https://www.torproject.org/download/
-2. Install it silently: ```tor-browser-windows-x86_64-portable-14.0.1.exe /S```
-3. Opens the TOR browser from the folder on the desktop
-4. Connect to TOR and browse a few sites.
+2. cd to folder where TOR was downloaded using CMD as admin.
+3. Copy the name of the file from file exploerer
+4. Paste on cmd and add: .exe at the end and /S to install silently
+5. Install it silently: ```tor-browser-windows-x86_64-portable-14.0.1.exe /S```
+6. This will create a folder on the Desktop after installtion
+7. Opens the TOR browser from the folder on the desktop
+8. Connect to TOR and browse a few sites.
    - Current Dread Forum: ```g66ol3eb5ujdckzqqfmjsbpdjufmjd5nsgdipvxmsh7rckzlhywlzlqd.onion```
    - Dark Markets Forum: ```g66ol3eb5ujdckzqqfmjsbpdjufmjd5nsgdipvxmsh7rckzlhywlzlqd.onion/d/DarkNetMarkets```
    - Current Elysium Market: ```https://elysiumutkwscnmdohj23gkcyp3ebrf4iio3sngc5tvcgyfp4nqqmwad.top/login```
    - ** It's possible the onion link for Dread Forum has changed, for latest links, you can try to check here: https://dread-forum.com/ **
-6. Create a folder on your desktop called ```tor-shopping-list.txt``` and put a few fake (illicit) items in there
-7. Delete the file.
+9. Create a folder on your desktop called ```tor-shopping-list.txt``` and put a few fake (illicit) items in there
+10. Delete the file.
 
 ---
 
